@@ -20,17 +20,17 @@ a {
 }
 
 .b-t {
-  border-top: 2px solid black;
+  border-bottom-color: black;
 }
 
 .b-b {
-  border-bottom: 2px solid black;
+  border-bottom-color: black;
 }
 
 .b-r {
-  border-right: 2px solid black;
+  border-bottom-color: black;
 }
 
 .b-l {
-  border-left: 2px solid black;
+  border-bottom-color: black;
 }
