@@ -20,11 +20,11 @@ a {
 }
 
 .b-t {
-  border-bottom-color: black;
+  border-top-color: black;
 }
 
 .b-b {
-  border-top-color: black;
+  border-bottom-color: black;
 }
 
 .b-r {
