@@ -6,3 +6,6 @@ function getNewRow() {
             </tr>`;
 }
 
+function displayContent() {
+    
+}
