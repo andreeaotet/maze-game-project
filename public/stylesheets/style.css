@@ -18,3 +18,19 @@ a {
   height: 50px;
   padding: 0px;
 }
+
+.b-t {
+  border-top: 2px solid black;
+}
+
+.b-b {
+  border-bottom: 2px solid black;
+}
+
+.b-r {
+  border-right: 2px solid black;
+}
+
+.b-l {
+  border-left: 2px solid black;
+}
