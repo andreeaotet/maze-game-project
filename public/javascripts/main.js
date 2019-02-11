@@ -6,32 +6,41 @@ function loadMaze() {
 }
 
 function getBorderClass(cell) {
-    return cell.split("").map(function(borderDirection) {
+    return cell.split("").map(function (borderDirection) {
         return "b-" + borderDirection
     }).join(" ");
 }
 
 function render(maze) {
-    var cells = maze[2];
-
-    var mainRows = maze.map(function(cells) {
+    var mainRows = maze.map(function (cells) {
         // console.log('cells', cells);
 
-        var rows = cells.map(function (cell) {
-            //console.log('show cell', cell);
+        var rows = cells.map(function (cell, index) {
             var cls = getBorderClass(cell);
             return `<div class="cell ${cls}">&nbsp;</div>`;
         });
 
-        //console.log('rows', rows);
-        // console.info(rows.join(''));
-
         return '<div class="row">' + rows.join('') + '</div>';
     });
-    
-    // console.log(mainRows);
 
     document.querySelector('.container').innerHTML = mainRows.join('');
+
+    //var startingCell = document.querySelector('.cell').innerHTML = "&#128113;";
+    var startingCell = document.querySelector('.cell');
+    startingCell.classList.add("player")
+
+    // var finishCell = document.querySelector('').innerHTML = "&#128187;"
+}
+
+function initEvents() {
+    $( ".player" ).keypress(function() {
+        console.log( "Handler for .keypress() called." );
+      });
+
+      $( ".player" ).click(function() {
+        $( ".player" ).keypress();
+      });
 }
 
 loadMaze();
+initEvents();
