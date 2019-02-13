@@ -26,20 +26,36 @@ function render(maze) {
     document.querySelector('.container').innerHTML = mainRows.join('');
 
     //var startingCell = document.querySelector('.cell').innerHTML = "&#128113;";
+   
     var startingCell = document.querySelector('.cell');
     startingCell.classList.add("player")
-
+    
     // var finishCell = document.querySelector('').innerHTML = "&#128187;"
 }
 
 function initEvents() {
-    $( ".player" ).keypress(function() {
-        console.log( "Handler for .keypress() called." );
-      });
+    $(document).keydown(function(e) {
+        var position = $(".player").position();
 
-      $( ".player" ).click(function() {
-        $( ".player" ).keypress();
-      });
+        switch (e.keyCode) {
+            case 37:
+            $(".player").css('left', position.left - 50 + 'px');
+                console.warn('left');
+                break;
+            case 38:
+               $(".player").css('top', position.top - 50 + 'px');
+                console.warn('up');
+                break;
+            case 39:
+                $(".player").css('left', position.left + 50 + 'px');
+                console.warn('right');
+                break;
+            case 40:
+                $(".player").css('top', position.top + 50 + 'px');
+                console.warn('down');
+                break;
+        }
+    });
 }
 
 loadMaze();
