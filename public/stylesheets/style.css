@@ -50,6 +50,6 @@ a {
 }
 
 .player {
-  position: absolute;
+  /* position: absolute; */
   border: solid 2px transparent;
 }
