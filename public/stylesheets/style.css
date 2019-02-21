@@ -14,11 +14,11 @@ a {
 
 .row {
   box-sizing: border-box;
-  position: relative;
+  /* position: relative; */
 }
 
 .cell {
-  position: relative;
+  /* position: relative; */
   border: solid 2px transparent;
   display: inline-block;
   width: 50px;
@@ -26,7 +26,7 @@ a {
   box-sizing: border-box;
   text-align: center;
   /* padding: 7px; */
-  font-size: 25px;
+  /* font-size: 25px; */
 }
 
 .b-t {
@@ -50,6 +50,7 @@ a {
 }
 
 .player {
-  /* position: absolute; */
+  position: absolute;
   border: solid 2px transparent;
+  font-size: 30px;
 }

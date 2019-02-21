@@ -1,7 +1,24 @@
+var player = document.createElement("div");
+// element.addClass("player");
+player.classList.add("player");
+
+var currentPosition = 68;
+
+
+
 function loadMaze() {
-    $.ajax('data/mazeeg.json').done(function (maze) {
+    $.ajax('/maze').done(function (response) {
+        var maze;
+        if (typeof response.maze === 'string') {
+            maze = JSON.parse(response.maze);
+        } else {
+            maze = response.maze;
+        }
+        
+        console.log('maze loaded: ', maze);
         window.maze = maze;
         render(maze);
+        document.querySelectorAll(".cell")[currentPosition].appendChild(player);
     });
 }
 
@@ -15,9 +32,9 @@ function render(maze) {
     var mainRows = maze.map(function (cells) {
         // console.log('cells', cells);
 
-        var rows = cells.map(function (cell, index) {
+        var rows = cells.map(function (cell) {
             var cls = getBorderClass(cell);
-            return `<div class="cell ${cls}">&nbsp;</div>`;
+            return `<div class="cell ${cls}"></div>`;
         });
 
         return '<div class="row">' + rows.join('') + '</div>';
@@ -25,38 +42,66 @@ function render(maze) {
 
     document.querySelector('.container').innerHTML = mainRows.join('');
 
-    //var startingCell = document.querySelector('.cell').innerHTML = "&#128113;";
-   
-    var startingCell = document.querySelector('.cell');
-    startingCell.classList.add("player")
-    
-    // var finishCell = document.querySelector('').innerHTML = "&#128187;"
+    // var startingCell = document.querySelector('.cell');
+    // startingCell.classList.add("player")
 }
+
+// function moveElement() {
+//     document.querySelectorAll(".cell")[currentPosition + 1].appendChild(element);
+// }
+
+
+// var divs = document.querySelectorAll('div');
+// function moveElement() {
+// 	document.onkeydown = function (e) {
+        
+//         document.querySelectorAll('.cell').classList.add('player');
+//         document.querySelectorAll('.cell').classList.remove('player');
+//         i++;
+//         }
+// 	}
+// }
+
+
+// function moveElement(){
+//     $("div:not(.container, .row)").keydown(function() {
+//         // var $cell = $(this);
+//         if ($("div:not(.container)").hasClass("player") ) {
+//           $("div:not(.container)").removeClass("player");
+//           $(this).addClass("player");
+//         } else {
+//           $(this).addClass("player");
+//         }
+//       });
+//     }
 
 function initEvents() {
-    $(document).keydown(function(e) {
-        var position = $(".player").position();
-
+	// var divs = document.querySelectorAll("div");
+    // divs.forEach(moveElement)
+    
+    document.onkeydown = function(e) {
+        
         switch (e.keyCode) {
             case 37:
-            $(".player").css('left', position.left - 50 + 'px');
-                console.warn('left');
+               currentPosition--;
                 break;
             case 38:
-               $(".player").css('top', position.top - 50 + 'px');
-                console.warn('up');
+               currentPosition -= 10;
                 break;
             case 39:
-                $(".player").css('left', position.left + 50 + 'px');
-                console.warn('right');
+                currentPosition++;
                 break;
             case 40:
-                $(".player").css('top', position.top + 50 + 'px');
-                console.warn('down');
+                currentPosition += 10;
                 break;
         }
-    });
+
+        document.querySelectorAll(".cell")[currentPosition].appendChild(player);
+    };
+
+
 }
+
 
 loadMaze();
 initEvents();
