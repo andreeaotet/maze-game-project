@@ -2,7 +2,7 @@ var player = document.createElement("div");
 // element.addClass("player");
 player.classList.add("player");
 
-var currentPosition = 68;
+var currentPosition = 0;
 
 
 
@@ -46,62 +46,48 @@ function render(maze) {
     // startingCell.classList.add("player")
 }
 
-// function moveElement() {
-//     document.querySelectorAll(".cell")[currentPosition + 1].appendChild(element);
-// }
+function getStep(keyCode) {
+    if (!canMove(keyCode)) {
+        return 0;
+    }
+    switch (keyCode) {
+        case 37:
+            return -1;
+        case 38:
+           return -10;
+        case 39:
+            return 1;
+        case 40:
+            return 10
+    }
+}
 
-
-// var divs = document.querySelectorAll('div');
-// function moveElement() {
-// 	document.onkeydown = function (e) {
-        
-//         document.querySelectorAll('.cell').classList.add('player');
-//         document.querySelectorAll('.cell').classList.remove('player');
-//         i++;
-//         }
-// 	}
-// }
-
-
-// function moveElement(){
-//     $("div:not(.container, .row)").keydown(function() {
-//         // var $cell = $(this);
-//         if ($("div:not(.container)").hasClass("player") ) {
-//           $("div:not(.container)").removeClass("player");
-//           $(this).addClass("player");
-//         } else {
-//           $(this).addClass("player");
-//         }
-//       });
-//     }
+function canMove(keyCode) {
+    var myBorders = maze[parseInt(currentPosition / 10)][currentPosition % 10];// /10; restul%
+    console.info('borders', myBorders);
+    switch (keyCode) {
+        case 37:
+            return true;
+        case 38:
+           return true;
+        case 39:
+            return !myBorders.includes('r');
+        case 40:
+            return true
+    }
+}
 
 function initEvents() {
-	// var divs = document.querySelectorAll("div");
-    // divs.forEach(moveElement)
-    
     document.onkeydown = function(e) {
         
-        switch (e.keyCode) {
-            case 37:
-               currentPosition--;
-                break;
-            case 38:
-               currentPosition -= 10;
-                break;
-            case 39:
-                currentPosition++;
-                break;
-            case 40:
-                currentPosition += 10;
-                break;
-        }
 
+      currentPosition += getStep(e.keyCode);
+      
         document.querySelectorAll(".cell")[currentPosition].appendChild(player);
     };
 
 
 }
-
 
 loadMaze();
 initEvents();
