@@ -50,7 +50,7 @@ INSERT INTO `mazes` (`id`, `x`, `y`, `name`, `maze`) VALUES
 -- Indexes for table `mazes`
 --
 ALTER TABLE `mazes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`); 
 
 --
 -- AUTO_INCREMENT for dumped tables
