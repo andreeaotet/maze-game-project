@@ -1,7 +1,7 @@
 {
     "x": 10,
     "y": 10,
-    "name": "classic",
+    "name": "master",
     "maze": [
         ["lb", "t", "tr", "t", "tb", "tr", "t", "tb", "tb", "trb"],
         ["lb", "rb", "r", "r", "r", "r", "b", "", "b", "r"],
@@ -15,3 +15,4 @@
         ["lb", "b", "b", "b", "b", "rb", "b", "rb", "b", "b"]
     ]
 }
+
