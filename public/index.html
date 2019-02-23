@@ -10,12 +10,30 @@
 </head>
 
 <body>
+    <div class="menuButton">
+        <div class="dropDownContainer">
+            <!-- <input id="dropDown" type="button" onclick="" value="Menu"> -->
+            <div class="customSelect">
+                <select id="optionSelect">
+                    <option value="4">Very easy</option>
+                    <option value="5">Easy</option>
+                    <option value="6">Medium</option>
+                    <option value="7">Average</option>
+                    <option value="8">Classic</option>
+                    <option value="9">Hard</option>
+                    <option value="10">Master</option>
+                </select>
+            </div>
+
+        </div>
+        <input id="startMaze" type="button" onclick="loadMaze()" value="Start" />
+    </div>
     <div class="container" id="maze">
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="javascripts/main.js"></script>
 </body>
 

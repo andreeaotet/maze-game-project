@@ -89,5 +89,5 @@ function initEvents() {
 
 }
 
-loadMaze();
+// loadMaze();
 initEvents();

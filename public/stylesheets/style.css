@@ -7,9 +7,57 @@ a {
   color: #00B7FF;
 }
 
+.menuButton {
+  padding-bottom: 20%;
+}
+
 .container {
   border: transparent;
   position: relative;
+}
+
+.dropDownContainer {
+  position: relative;
+  display: inline-block;
+}
+
+input,
+select {
+   @include transition;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.30);
+    height: 45px;
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    appearance: none;
+}
+    .dropDownContainer:hover {
+        background-color: rgba(0, 0, 0, 0.70);
+    }
+    .dropDownContainer:active {
+        background-color: black;
+    }
+    .dropDownContainer:focus {
+        outline: none;
+    }
+  
+
+.customSelect {
+  display: inline-block;
+  select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-repeat: no-repeat;
+      background-position: 125px center;
+  }
 }
 
 .row {
