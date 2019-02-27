@@ -1,0 +1,14 @@
+{
+    "x": 5,
+    "y": 5,
+    "name": "easy",
+    "maze": [
+        ["lr", "tb", "tb", "t", "tr"],
+        ["lb", "r", "", "br", "r"],
+        ["l", "br", "b", "r", "r"],
+        ["lr", "", "r", "r", "r"],
+        ["lb", "br", "b", "br", "b"]
+    ],
+    "initial_position": 0,
+    "final_position": 24
+}

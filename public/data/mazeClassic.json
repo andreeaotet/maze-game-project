@@ -11,5 +11,7 @@
         ["lb", "r", "", "br", "r", "", "b", "br"],
         ["l", "br", "r", "", "b", "br", "", "r"],
         ["lb", "b", "br", "b", "b", "b", "br", "b"]
-    ]
+    ],
+    "initial_position": 0,
+    "final_position": 63
 }

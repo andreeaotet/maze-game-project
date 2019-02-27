@@ -3,9 +3,11 @@
     "y": 4,
     "name": "very easy",
     "maze": [
-    ["bt", "t", "tbr", "tr"],
-    ["l", "l", "br", "r"],
-    ["l", "rb", "b", "r"],
-    ["bl", "b", "b", "b"]
-    ] 
+        ["bt", "t", "tbr", "tr"],
+        ["l", "l", "br", "r"],
+        ["l", "rb", "b", "r"],
+        ["bl", "b", "b", "b"]
+    ],
+    "initial_position": 0,
+   "final_position": 15
 }

@@ -1,0 +1,15 @@
+{
+    "x": 6,
+    "y": 6,
+    "name": "medium",
+    "maze": [
+        ["t", "tb", "tb", "t", "tb","tr"],
+        ["lb", "b", "br", "r", "r", "r"],
+        ["l", "b", "b", "br", "r", "br"],
+        ["lb", "b", "b", "r", "", "r"],
+        ["l", "b", "b", "br", "r", "r"],
+        ["lb", "b", "b", "b", "br", "b"]
+   ],
+   "initial_position": 0,
+   "final_position": 35
+}

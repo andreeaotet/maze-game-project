@@ -1,0 +1,16 @@
+{
+    "x": 7,
+    "y": 7,
+    "name": "average",
+    "maze": [
+        ["t", "tb", "tb", "tb", "tb","tr", "tr"],
+        ["lr", "b", "r", "", "r", "b", "r"],
+        ["lb", "br", "r", "b", "", "b", "r"],
+        ["l", "b", "b", "b", "r", "", "br"],
+        ["lr", "", "b", "r", "r", "br", "r"],
+        ["lbr", "r", "b", "b", "br", "", "r"],
+        ["lb", "b", "b", "b", "b", "br", "b"]
+   ],
+   "initial_position": 0,
+   "final_position": 48
+}

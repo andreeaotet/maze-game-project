@@ -13,6 +13,8 @@
         ["lr", "r", "b", "", "r", "b", "rb", "", "r", "r"],
         ["lr", "b", "b", "rb", "b", "b", "r", "r", "r", "rb"],
         ["lb", "b", "b", "b", "b", "rb", "b", "rb", "b", "b"]
-    ]
+    ],
+    "initial_position": 0,
+    "final_position": 99
 }
 
