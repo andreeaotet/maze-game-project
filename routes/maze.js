@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  var content = fs.readFileSync('public/data/mazeeg.json');
+  var content = fs.readFileSync('public/data/mazeMaster.json');
   var maze = JSON.parse(content);
   res.json(maze);
 });

@@ -1,5 +1,4 @@
 var player = document.createElement("div");
-// element.addClass("player");
 player.classList.add("player");
 
 var castle = document.createElement("div");
@@ -48,8 +47,52 @@ function render(maze) {
     document.querySelector('.container').innerHTML = mainRows.join('');
 }
 
-function getStep(keyCode) {
-    if (!canMove(keyCode)) {
+// ############## MAZE HARD ###############
+
+// function getStep9(keyCode) {
+//     if (!canMove9(keyCode)) {
+//         return 0;
+//     }
+//     switch (keyCode) {
+//         case 37:
+//             return -1;
+//         case 38:
+//             return -9;
+//         case 39:
+//             return +1;
+//         case 40:
+//             return +9
+//     }
+// }
+
+// function canMove9(keyCode) {
+//     var currentPositionDivide = parseInt(currentPosition / 9);
+//     var currentPositionMod = currentPosition % 9;
+//     var myBorders = maze[currentPositionDivide][currentPositionMod];// /10; restul%
+
+//     var rightBorder = maze[currentPositionDivide][currentPositionMod - 1]; //left
+//     var bottomBorder = maze[currentPositionDivide - 1][currentPositionMod + 1];  // up
+//     var leftBorder = maze[currentPositionDivide][currentPositionMod + 1]; // right
+//     var topBorder = maze[currentPositionDivide + 1][currentPositionMod - 1]; // bottom
+
+
+//     console.info('borders', myBorders);
+//     switch (keyCode) {
+//         case 37: /* left */
+//             return !myBorders.includes('l') && !rightBorder.includes('r');
+//         case 38: /* up */
+//            return !myBorders.includes('t') && !bottomBorder.includes('b');
+//         case 39: /* right */
+//             return !myBorders.includes('r') && !leftBorder.includes('l');
+//         case 40: /* down */
+//             return !myBorders.includes('b') && !topBorder.includes('t');
+//     }
+// }
+
+// ############## MAZE MASTER ##############
+
+function getStep10(keyCode) {
+    if (!canMove10(keyCode)) {
         return 0;
     }
     switch (keyCode) {
@@ -64,19 +107,15 @@ function getStep(keyCode) {
     }
 }
 
-function canMove(keyCode) {
+function canMove10(keyCode) {
     var currentPositionDivide = parseInt(currentPosition / 10);
     var currentPositionMod = currentPosition % 10;
     var myBorders = maze[currentPositionDivide][currentPositionMod];// /10; restul%
 
-    //left
-    var rightBorder = maze[currentPositionDivide][currentPositionMod - 1]
-    // up
-    var bottomBorder = maze[currentPositionDivide - 1][currentPositionMod];
-    // right
-    var leftBorder = maze[currentPositionDivide][currentPositionMod + 1];
-   // bottom
-   var topBorder = maze[currentPositionDivide + 1][currentPositionMod];
+    var rightBorder = maze[currentPositionDivide][currentPositionMod - 1]; //left
+    var bottomBorder = maze[currentPositionDivide - 1][currentPositionMod];  // up
+    var leftBorder = maze[currentPositionDivide][currentPositionMod + 1]; // right
+    var topBorder = maze[currentPositionDivide + 1][currentPositionMod]; // bottom
 
     console.info('borders', myBorders);
     switch (keyCode) {
@@ -93,7 +132,7 @@ function canMove(keyCode) {
 
 function initEvents() {
     document.onkeydown = function(e) {
-        currentPosition += getStep(e.keyCode);
+        currentPosition += getStep10(e.keyCode);
         document.querySelectorAll(".cell")[currentPosition].appendChild(player);
     };
 
