@@ -1,6 +1,7 @@
-# Agenda APP
+# Maze Game app
 
-A simple game of maze
+A simple game of maze. 
+Users can play as single player. The challenge of the game is for the player to find their way out to the castle.
 
 ## Live Preview
 
@@ -21,6 +22,9 @@ npm install
 ## Running app
 
 ```
+Open XAMPP and Start Apache and MySQL Modules
+Open http://localhost/phpmyadmin
+
 npm run devstart
 ```
 
