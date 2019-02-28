@@ -10,6 +10,7 @@ var finishPosition = 99;
 
 var form = document.getElementById("mazeLevels");
 form.addEventListener('click', displayLevels);
+
 function displayLevels() {
     var newTopic = "";
     var topicOption = document.getElementById('optionSelect').value;
@@ -33,18 +34,22 @@ function displayLevels() {
     }
 }
 
-
 function loadMaze() {
-    var id = document.getElementById('optionSelect').value
+    var id = document.getElementById('optionSelect').value;
 
-    $.ajax(`/maze?id=${id}`).done(function (response) {
+    $.ajax(`/maze?id=${id}`, {
+        //CONTENT TYPE json
+    }).done(function (response) {
         var maze;
         if (typeof response.maze === 'string') {
             maze = JSON.parse(response.maze);
+            currentPosition = response.initial_position;
+            finishPosition = response.final_position;
+            size = 10;//todo
         } else {
             maze = response.maze;
         }
-        
+
         console.log('maze loaded: ', maze);
         window.maze = maze;
         render(maze);
@@ -126,7 +131,7 @@ function getStep10(keyCode) {
         case 37:
             return -1;
         case 38:
-           return -10;
+            return -10;
         case 39:
             return +1;
         case 40:
@@ -134,31 +139,32 @@ function getStep10(keyCode) {
     }
 }
 
-function canMove10(keyCode) {
-    var currentPositionDivide = parseInt(currentPosition / 10);
-    var currentPositionMod = currentPosition % 10;
-    var myBorders = maze[currentPositionDivide][currentPositionMod];// /10; restul%
+function getBorder(rowNr, colNr) {
 
-    var rightBorder = maze[currentPositionDivide][currentPositionMod - 1]; //left
-    var bottomBorder = maze[currentPositionDivide - 1][currentPositionMod];  // up
-    var leftBorder = maze[currentPositionDivide][currentPositionMod + 1]; // right
-    var topBorder = maze[currentPositionDivide + 1][currentPositionMod]; // bottom
+}
+
+function canMove10(keyCode) {
+    var rowNr = parseInt(currentPosition / 10);
+    var colNr = currentPosition % 10;
+    var myBorders = maze[rowNr][colNr];// /10; restul%
 
     console.info('borders', myBorders);
     switch (keyCode) {
         case 37: /* left */
-            return !myBorders.includes('l') && !rightBorder.includes('r');
+            return !myBorders.includes('l') && !maze[rowNr][colNr - 1].includes('r');
         case 38: /* up */
-           return !myBorders.includes('t') && !bottomBorder.includes('b');
+            var bottomBorder = rowNr === 0 ? 'b'  : maze[rowNr - 1][colNr];
+            return !myBorders.includes('t') && !bottomBorder.includes('b');
         case 39: /* right */
-            return !myBorders.includes('r') && !leftBorder.includes('l');
+            return !myBorders.includes('r') && !maze[rowNr][colNr + 1].includes('l');
         case 40: /* down */
+            var topBorder = rowNr === 9 ? 't' : maze[rowNr + 1][colNr]; // bottom
             return !myBorders.includes('b') && !topBorder.includes('t');
     }
 }
 
 function initEvents() {
-    document.onkeydown = function(e) {
+    document.onkeydown = function (e) {
         currentPosition += getStep10(e.keyCode);
         document.querySelectorAll(".cell")[currentPosition].appendChild(player);
     };
