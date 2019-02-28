@@ -4,7 +4,7 @@ player.classList.add("player");
 var castle = document.createElement("div");
 castle.classList.add("castle");
 
-
+var currentPosition = 26;
 var finishPosition = 99;
 
 
@@ -14,32 +14,30 @@ function displayLevels() {
     var newTopic = "";
     var topicOption = document.getElementById('optionSelect').value;
 
-    if (topicOption == 4) {
+    if (topicOption == 2) {
         newTopic = "Very easy";
-    } else if (topicOption == 5) {
+    } else if (topicOption == 3) {
         newTopic = "Easy";
-    } else if (topicOption == 6) {
+    } else if (topicOption == 4) {
         newTopic = "Medium";
-    } else if (topicOption == 7) {
+    } else if (topicOption == 5) {
         newTopic = "Average";
-    } else if (topicOption == 8) {
+    } else if (topicOption == 6) {
         newTopic = "Classic";
-    } else if (topicOption == 9) {
+    } else if (topicOption == 7) {
         newTopic = "Hard";
-    } else if (topicOption == 10) {
+    } else if (topicOption == 1) {
         newTopic = "Master";
     } else {
         newTopic = "";
     }
 }
 
-// function initialPosition() {
-//     var currentPosition = "";
-
-// }
 
 function loadMaze() {
-    $.ajax('/maze').done(function (response) {
+    var id = document.getElementById('optionSelect').value
+
+    $.ajax(`/maze?id=${id}`).done(function (response) {
         var maze;
         if (typeof response.maze === 'string') {
             maze = JSON.parse(response.maze);
