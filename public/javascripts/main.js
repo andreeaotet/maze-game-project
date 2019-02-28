@@ -4,10 +4,39 @@ player.classList.add("player");
 var castle = document.createElement("div");
 castle.classList.add("castle");
 
-var currentPosition = 26;
+
 var finishPosition = 99;
 
 
+var form = document.getElementById("mazeLevels");
+form.addEventListener('click', displayLevels);
+function displayLevels() {
+    var newTopic = "";
+    var topicOption = document.getElementById('optionSelect').value;
+
+    if (topicOption == 4) {
+        newTopic = "Very easy";
+    } else if (topicOption == 5) {
+        newTopic = "Easy";
+    } else if (topicOption == 6) {
+        newTopic = "Medium";
+    } else if (topicOption == 7) {
+        newTopic = "Average";
+    } else if (topicOption == 8) {
+        newTopic = "Classic";
+    } else if (topicOption == 9) {
+        newTopic = "Hard";
+    } else if (topicOption == 10) {
+        newTopic = "Master";
+    } else {
+        newTopic = "";
+    }
+}
+
+// function initialPosition() {
+//     var currentPosition = "";
+
+// }
 
 function loadMaze() {
     $.ajax('/maze').done(function (response) {
