@@ -4,9 +4,9 @@ player.classList.add("player");
 var castle = document.createElement("div");
 castle.classList.add("castle");
 
-var currentPosition = 26;
-var finishPosition = 99;
-
+var currentPosition;
+var finishPosition;
+var size;
 
 var form = document.getElementById("mazeLevels");
 form.addEventListener('click', displayLevels);
@@ -16,22 +16,25 @@ function displayLevels() {
     var topicOption = document.getElementById('optionSelect').value;
 
     if (topicOption == 2) {
-        newTopic = "Very easy";
+        newTopic = "Welcome to our Very easy game";
     } else if (topicOption == 3) {
-        newTopic = "Easy";
+        newTopic = "Welcome to our Easy game";
     } else if (topicOption == 4) {
-        newTopic = "Medium";
+        newTopic = "Welcome to our Medium game";
     } else if (topicOption == 5) {
-        newTopic = "Average";
+        newTopic = "Welcome to our Average game";
     } else if (topicOption == 6) {
-        newTopic = "Classic";
+        newTopic = "Welcome to our Classic game";
     } else if (topicOption == 7) {
-        newTopic = "Hard";
+        newTopic = "Welcome to our Hard game";
     } else if (topicOption == 1) {
-        newTopic = "Master";
+        newTopic = "Welcome to our Master game";
     } else {
         newTopic = "";
     }
+
+    var mazeTopic = document.getElementById('mazeTopic');
+    mazeTopic.innerText = newTopic;
 }
 
 function loadMaze() {
@@ -43,9 +46,9 @@ function loadMaze() {
         var maze;
         if (typeof response.maze === 'string') {
             maze = JSON.parse(response.maze);
-            currentPosition = response.initial_position;
-            finishPosition = response.final_position;
-            size = 10;//todo
+            currentPosition = response.initial_position; // DB
+            finishPosition = response.final_position; // DB
+            size = response.x; // DB
         } else {
             maze = response.maze;
         }
@@ -79,93 +82,45 @@ function render(maze) {
     document.querySelector('.container').innerHTML = mainRows.join('');
 }
 
-// ############## MAZE HARD ###############
-
-// function getStep9(keyCode) {
-//     if (!canMove9(keyCode)) {
-//         return 0;
-//     }
-//     switch (keyCode) {
-//         case 37:
-//             return -1;
-//         case 38:
-//             return -9;
-//         case 39:
-//             return +1;
-//         case 40:
-//             return +9
-//     }
-// }
-
-// function canMove9(keyCode) {
-//     var currentPositionDivide = parseInt(currentPosition / 9);
-//     var currentPositionMod = currentPosition % 9;
-//     var myBorders = maze[currentPositionDivide][currentPositionMod];// /10; restul%
-
-//     var rightBorder = maze[currentPositionDivide][currentPositionMod - 1]; //left
-//     var bottomBorder = maze[currentPositionDivide - 1][currentPositionMod + 1];  // up
-//     var leftBorder = maze[currentPositionDivide][currentPositionMod + 1]; // right
-//     var topBorder = maze[currentPositionDivide + 1][currentPositionMod - 1]; // bottom
-
-
-//     console.info('borders', myBorders);
-//     switch (keyCode) {
-//         case 37: /* left */
-//             return !myBorders.includes('l') && !rightBorder.includes('r');
-//         case 38: /* up */
-//            return !myBorders.includes('t') && !bottomBorder.includes('b');
-//         case 39: /* right */
-//             return !myBorders.includes('r') && !leftBorder.includes('l');
-//         case 40: /* down */
-//             return !myBorders.includes('b') && !topBorder.includes('t');
-//     }
-// }
-
-// ############## MAZE MASTER ##############
-
-function getStep10(keyCode) {
-    if (!canMove10(keyCode)) {
+function getStep(keyCode) {
+    if (!canMove(keyCode)) {
         return 0;
     }
     switch (keyCode) {
         case 37:
             return -1;
         case 38:
-            return -10;
+            return -size;
         case 39:
             return +1;
         case 40:
-            return +10
+            return +size
     }
 }
 
-function getBorder(rowNr, colNr) {
-
-}
-
-function canMove10(keyCode) {
-    var rowNr = parseInt(currentPosition / 10);
-    var colNr = currentPosition % 10;
+function canMove(keyCode) {
+    var rowNr = parseInt(currentPosition / size);
+    var colNr = currentPosition % size;
     var myBorders = maze[rowNr][colNr];// /10; restul%
 
-    console.info('borders', myBorders);
-    switch (keyCode) {
-        case 37: /* left */
-            return !myBorders.includes('l') && !maze[rowNr][colNr - 1].includes('r');
-        case 38: /* up */
-            var bottomBorder = rowNr === 0 ? 'b'  : maze[rowNr - 1][colNr];
-            return !myBorders.includes('t') && !bottomBorder.includes('b');
-        case 39: /* right */
-            return !myBorders.includes('r') && !maze[rowNr][colNr + 1].includes('l');
-        case 40: /* down */
-            var topBorder = rowNr === 9 ? 't' : maze[rowNr + 1][colNr]; // bottom
-            return !myBorders.includes('b') && !topBorder.includes('t');
-    }
+    // if (size == 10) {
+        switch (keyCode) {
+            case 37: /* left */
+                return !myBorders.includes('l') && !maze[rowNr][colNr - 1].includes('r');
+            case 38: /* up */
+                var bottomBorder = rowNr === 0 ? 'b' : maze[rowNr - 1][colNr];
+                return !myBorders.includes('t') && !bottomBorder.includes('b');
+            case 39: /* right */
+                return !myBorders.includes('r') && !maze[rowNr][colNr + 1].includes('l');
+            case 40: /* down */
+                var topBorder = rowNr === size-1 ? 't' : maze[rowNr + 1][colNr];
+                return !myBorders.includes('b') && !topBorder.includes('t');
+        }
 }
 
 function initEvents() {
     document.onkeydown = function (e) {
-        currentPosition += getStep10(e.keyCode);
+        currentPosition += getStep(e.keyCode);
         document.querySelectorAll(".cell")[currentPosition].appendChild(player);
     };
 
