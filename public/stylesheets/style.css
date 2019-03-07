@@ -153,3 +153,22 @@ div.showLevel {
     margin-top: -150px;
   }
 
+  @media only screen and (max-width: 400px) {
+    input, select{
+        width: 80px;
+        font-size: 10px;
+    }
+    .cell {
+      width: 20px;
+      height: 20px;
+    }
+    .player, .castle {
+      font-size: 12px;
+    }
+    .noteMazeShow {
+      font-size: 15px;
+    }
+    #message {
+      width: 100%
+    }
+}
