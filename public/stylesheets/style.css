@@ -1,5 +1,5 @@
 html {
-  background-image: url(https://www.bmocm.com/about-us/images/location-map.gif);
+  background: url(https://www.bmocm.com/about-us/images/location-map.gif);
 }
 body {
   padding: 50px;
@@ -10,10 +10,6 @@ body {
 a {
   color: #00B7FF;
 }
-
-/* .menuButton {
-  padding-bottom: 10px;
-} */
 
 .container {
   border: transparent;
@@ -40,7 +36,8 @@ select {
     border-radius: 5px;
     color: white;
     display: inline-block;
-    font-size: 15px;
+    font-size: 17px;
+    font-weight: bolder;
     text-align: center;
     text-decoration: none;
     appearance: none;
