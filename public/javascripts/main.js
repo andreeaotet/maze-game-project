@@ -9,6 +9,15 @@ var finishPosition;
 var size;
 var cell;
 
+var API_URL = {
+	load: function(id) {
+		if (location.host === "andreeaotet.github.io") {
+			return `data/maze-${id}.json`
+		}
+		return `maze?id=${id}`
+	}
+};
+
 var form = document.getElementById("mazeLevels");
 form.addEventListener('click', displayLevels);
 
@@ -41,18 +50,23 @@ function displayLevels() {
 function loadMaze() {
     var id = document.getElementById('optionSelect').value;
 
-    $.ajax(`/maze?id=${id}`, {
+    $.ajax(API_URL.load(id), {
         //CONTENT TYPE json
     }).done(function (response) {
         var maze;
         if (typeof response.maze === 'string') {
             maze = JSON.parse(response.maze);
+
             currentPosition = response.initial_position; // DB
             finishPosition = response.final_position; // DB
             size = response.x; // DB
         } else {
             maze = response.maze;
         }
+
+        currentPosition = response.initial_position; // DB
+        finishPosition = response.final_position; // DB
+        size = response.x; // DB
 
         console.log('maze loaded: ', maze);
         window.maze = maze;
@@ -140,6 +154,9 @@ function modalVisability(id) {
             document.getElementById(id).style.visibility = "visible";
         }
     }
+function finishGame() {
+    // cand clasa player este pe acelasi loc cu clasa castle
+}
 
 // loadMaze();
 initEvents();

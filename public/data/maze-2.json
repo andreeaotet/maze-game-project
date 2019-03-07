@@ -4,7 +4,7 @@
     "name": "very easy",
     "maze": [
         ["bt", "t", "tbr", "tr"],
-        ["l", "l", "br", "r"],
+        ["lr", "", "br", "r"],
         ["l", "rb", "b", "r"],
         ["bl", "b", "b", "b"]
     ],
