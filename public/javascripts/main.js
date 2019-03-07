@@ -7,6 +7,7 @@ castle.classList.add("castle");
 var currentPosition;
 var finishPosition;
 var size;
+var cell;
 
 var form = document.getElementById("mazeLevels");
 form.addEventListener('click', displayLevels);
@@ -58,6 +59,12 @@ function loadMaze() {
         render(maze);
         document.querySelectorAll(".cell")[currentPosition].appendChild(player);
         document.querySelectorAll('.cell')[finishPosition].appendChild(castle);
+
+        if (currentPosition.x == finishPosition.y) {
+            return modalVisability('modal-message');
+        } else {
+            return false;
+        }
     });
 }
 
@@ -104,18 +111,18 @@ function canMove(keyCode) {
     var myBorders = maze[rowNr][colNr];// /10; restul%
 
     // if (size == 10) {
-        switch (keyCode) {
-            case 37: /* left */
-                return !myBorders.includes('l') && !maze[rowNr][colNr - 1].includes('r');
-            case 38: /* up */
-                var bottomBorder = rowNr === 0 ? 'b' : maze[rowNr - 1][colNr];
-                return !myBorders.includes('t') && !bottomBorder.includes('b');
-            case 39: /* right */
-                return !myBorders.includes('r') && !maze[rowNr][colNr + 1].includes('l');
-            case 40: /* down */
-                var topBorder = rowNr === size-1 ? 't' : maze[rowNr + 1][colNr];
-                return !myBorders.includes('b') && !topBorder.includes('t');
-        }
+    switch (keyCode) {
+        case 37: /* left */
+            return !myBorders.includes('l') && !maze[rowNr][colNr - 1].includes('r');
+        case 38: /* up */
+            var bottomBorder = rowNr === 0 ? 'b' : maze[rowNr - 1][colNr];
+            return !myBorders.includes('t') && !bottomBorder.includes('b');
+        case 39: /* right */
+            return !myBorders.includes('r') && !maze[rowNr][colNr + 1].includes('l');
+        case 40: /* down */
+            var topBorder = rowNr === size - 1 ? 't' : maze[rowNr + 1][colNr];
+            return !myBorders.includes('b') && !topBorder.includes('t');
+    }
 }
 
 function initEvents() {
@@ -123,8 +130,16 @@ function initEvents() {
         currentPosition += getStep(e.keyCode);
         document.querySelectorAll(".cell")[currentPosition].appendChild(player);
     };
-
 }
+
+// window pop-up
+function modalVisability(id) {
+        if (document.getElementById(id).style.visibility === "visible") {
+            document.getElementById(id).style.visibility = "hidden";
+        } else {
+            document.getElementById(id).style.visibility = "visible";
+        }
+    }
 
 // loadMaze();
 initEvents();
