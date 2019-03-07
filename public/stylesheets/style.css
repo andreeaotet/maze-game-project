@@ -146,13 +146,13 @@ div.showLevel {
   background-color: rgba(0, 0, 0, 0.30);
   z-index: 1;
 }
+  #message {
+    width: 300px;
+    height: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
+  }
 
-#message {
-  width: 300px;
-  height: 300px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-left: -150px;
-  margin-top: -150px;
-}

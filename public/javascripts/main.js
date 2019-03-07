@@ -7,15 +7,15 @@ castle.classList.add("castle");
 var currentPosition;
 var finishPosition;
 var size;
-var cell;
+var sizeY;
 
 var API_URL = {
-	load: function(id) {
-		if (location.host === "andreeaotet.github.io") {
-			return `data/maze-${id}.json`
-		}
-		return `maze?id=${id}`
-	}
+    load: function (id) {
+        if (location.host === "andreeaotet.github.io") {
+            return `data/maze-${id}.json`
+        }
+        return `maze?id=${id}`
+    }
 };
 
 var form = document.getElementById("mazeLevels");
@@ -60,6 +60,7 @@ function loadMaze() {
             currentPosition = response.initial_position; // DB
             finishPosition = response.final_position; // DB
             size = response.x; // DB
+            sizeY = response.y
         } else {
             maze = response.maze;
         }
@@ -67,18 +68,12 @@ function loadMaze() {
         currentPosition = response.initial_position; // DB
         finishPosition = response.final_position; // DB
         size = response.x; // DB
+        sizeY = response.y;
 
-        console.log('maze loaded: ', maze);
         window.maze = maze;
         render(maze);
         document.querySelectorAll(".cell")[currentPosition].appendChild(player);
         document.querySelectorAll('.cell')[finishPosition].appendChild(castle);
-
-        if (currentPosition.x == finishPosition.y) {
-            return modalVisability('modal-message');
-        } else {
-            return false;
-        }
     });
 }
 
@@ -122,9 +117,8 @@ function getStep(keyCode) {
 function canMove(keyCode) {
     var rowNr = parseInt(currentPosition / size);
     var colNr = currentPosition % size;
-    var myBorders = maze[rowNr][colNr];// /10; restul%
+    var myBorders = maze[rowNr][colNr];// /size; restul%
 
-    // if (size == 10) {
     switch (keyCode) {
         case 37: /* left */
             return !myBorders.includes('l') && !maze[rowNr][colNr - 1].includes('r');
@@ -143,20 +137,22 @@ function initEvents() {
     document.onkeydown = function (e) {
         currentPosition += getStep(e.keyCode);
         document.querySelectorAll(".cell")[currentPosition].appendChild(player);
+
+        if (currentPosition === finishPosition) {
+            return modalVisibility('modal-message');
+        } else {
+            return false
+        }
     };
 }
 
 // window pop-up
-function modalVisability(id) {
-        if (document.getElementById(id).style.visibility === "visible") {
-            document.getElementById(id).style.visibility = "hidden";
-        } else {
-            document.getElementById(id).style.visibility = "visible";
-        }
+function modalVisibility(id) {
+    if (document.getElementById(id).style.visibility == "visible") {
+        document.getElementById(id).style.visibility = "hidden";
+    } else {
+        document.getElementById(id).style.visibility = "visible";
     }
-function finishGame() {
-    // cand clasa player este pe acelasi loc cu clasa castle
 }
 
-// loadMaze();
 initEvents();
