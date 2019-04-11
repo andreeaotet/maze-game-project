@@ -119,17 +119,21 @@ function canMove(keyCode) {
     var colNr = currentPosition % size;
     var myBorders = maze[rowNr][colNr];// /size; restul%
 
-    switch (keyCode) {
-        case 37: /* left */
-            return !myBorders.includes('l') && !maze[rowNr][colNr - 1].includes('r');
-        case 38: /* up */
-            var bottomBorder = rowNr === 0 ? 'b' : maze[rowNr - 1][colNr];
-            return !myBorders.includes('t') && !bottomBorder.includes('b');
-        case 39: /* right */
-            return !myBorders.includes('r') && !maze[rowNr][colNr + 1].includes('l');
-        case 40: /* down */
-            var topBorder = rowNr === size - 1 ? 't' : maze[rowNr + 1][colNr];
-            return !myBorders.includes('b') && !topBorder.includes('t');
+    if (currentPosition !== finishPosition) {
+        switch (keyCode) {
+            case 37: /* left */
+                return !myBorders.includes('l') && !maze[rowNr][colNr - 1].includes('r');
+            case 38: /* up */
+                var bottomBorder = rowNr === 0 ? 'b' : maze[rowNr - 1][colNr];
+                return !myBorders.includes('t') && !bottomBorder.includes('b');
+            case 39: /* right */
+                return !myBorders.includes('r') && !maze[rowNr][colNr + 1].includes('l');
+            case 40: /* down */
+                var topBorder = rowNr === size - 1 ? 't' : maze[rowNr + 1][colNr];
+                return !myBorders.includes('b') && !topBorder.includes('t');
+        }
+    } else {
+        return modalVisibility('modal-message');
     }
 }
 
