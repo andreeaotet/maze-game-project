@@ -16,11 +16,11 @@ Open [maze.html](https://andreeaotet.github.io/maze-game-project/public/index.ht
 
 ## Structure
 
- - HTML/CSS - app layer;
- - Javascript creates interactive effects;
-   - jQuery simplifies HTML document event handling, animating and Ajax interactions for web development;
- - JSON file contains a collection of 7 mazes; 
- - SQL where the game levels are stored; 
+ - HTML/CSS - app layer
+ - Javascript creates interactive effects
+   - jQuery simplifies HTML document event handling, animating and Ajax interactions for web development
+ - JSON file contains a collection of 7 mazes
+ - SQL where the game levels are stored
 
 ## Setup
 
