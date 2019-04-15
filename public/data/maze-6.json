@@ -4,7 +4,7 @@
     "name": "classic",
     "maze": [
         ["tr", "t", "tb", "t", "t", "tb", "t", "tr"],                                              
-        ["lr", "r", "tr", "t", "rb", "t", "r", "r"],
+        ["lr", "r", "tr", "", "rb", "t", "r", "r"],
         ["lr", "b", "br", "r", "t", "br", "r", "r"],
         ["lb", "r", "", "br", "r", "", "br", "r"],
         ["l", "br", "b", "r", "r", "b", "br", "r"],
