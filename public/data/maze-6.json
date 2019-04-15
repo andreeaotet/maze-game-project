@@ -3,7 +3,7 @@
     "y": 8,
     "name": "classic",
     "maze": [
-        ["tr", "t", "tb", "t", "t", "tb", "t", "ltr"],                                              
+        ["tr", "t", "tb", "t", "t", "tb", "t", "tr"],                                              
         ["lr", "r", "tr", "t", "rb", "t", "r", "r"],
         ["lr", "b", "br", "r", "t", "br", "r", "r"],
         ["lb", "r", "", "br", "r", "", "br", "r"],

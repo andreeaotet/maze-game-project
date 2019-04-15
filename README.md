@@ -14,7 +14,7 @@ Open [maze.html](https://andreeaotet.github.io/maze-game-project/public/index.ht
 ## Setup
 
 ```
-git clone git@github.com:nmatei/node-agenda-web3.git
+git clone git@github.com:andreeaotet/maze-game-project.git
 cd maze-game-project
 npm install
 ```
