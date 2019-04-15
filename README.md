@@ -20,7 +20,7 @@ Open [maze.html](https://andreeaotet.github.io/maze-game-project/public/index.ht
  - Javascript creates interactive effects
    - jQuery simplifies HTML document event handling, animating and Ajax interactions for web development
  - JSON file contains a collection of 7 mazes
- - SQL where the game levels are stored
+ - mySQL where the game levels are stored
 
 ## Setup
 
