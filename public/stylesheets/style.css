@@ -1,5 +1,5 @@
 html {
-  background: url(https://ak4.picdn.net/shutterstock/videos/16716424/thumb/1.jpg);
+  background-color: #F5F5F5;
   background-size: cover;
 }
 body {
@@ -73,7 +73,7 @@ div.showLevel {
   font-weight: normal;
   font-style: italic;
   color: #666;
-  font-size: 35px;
+  font-size: 20px;
 }
 
 .row {
@@ -95,19 +95,19 @@ div.showLevel {
 }
 
 .b-t {
-  border-top-color:  black;
+  border-top-color:  white;
 }
 
 .b-b {
-  border-bottom-color: black;
+  border-bottom-color: white;
 }
 
 .b-r {
-  border-right-color: black;
+  border-right-color: white;
 }
 
 .b-l {
-  border-left-color: black;
+  border-left-color: white;
 }
 
 .player:before {

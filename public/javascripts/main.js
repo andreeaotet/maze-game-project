@@ -26,19 +26,19 @@ function displayLevels() {
     var topicOption = document.getElementById('optionSelect').value;
 
     if (topicOption == 2) {
-        newTopic = "Welcome - Level 1";
+        newTopic = "Welcome to Level 1";
     } else if (topicOption == 3) {
-        newTopic = "Welcome to our Easy game";
+        newTopic = "Welcome to Level 2";
     } else if (topicOption == 4) {
-        newTopic = "Welcome to our Medium game";
+        newTopic = "Welcome to Level 3";
     } else if (topicOption == 5) {
-        newTopic = "Welcome to our Average game";
+        newTopic = "Welcome to Level 4";
     } else if (topicOption == 6) {
-        newTopic = "Welcome to our Classic game";
+        newTopic = "Welcome to Level 5";
     } else if (topicOption == 7) {
-        newTopic = "Welcome to our Hard game";
+        newTopic = "Welcome to Level 6";
     } else if (topicOption == 1) {
-        newTopic = "Welcome to our Master game";
+        newTopic = "Welcome to Level 7";
     } else {
         newTopic = "";
     }
