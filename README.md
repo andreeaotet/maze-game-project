@@ -9,7 +9,7 @@ When the application is started, it displays the main menu screen. From this scr
 
 ## Live Preview
 
-Open [maze.html](https://danielaabriham.github.io/maze-game-project/public/index.html)
+Open [maze.html](https://andreeaotet.github.io/maze-game-project/public/index.html)
 
 ## Structure
 
