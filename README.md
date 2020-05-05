@@ -11,6 +11,8 @@ When the application is started, it displays the main menu screen. From this scr
 
 Open [maze.html](https://andreeaotet.github.io/maze-game-project/public/index.html)
 
+![image](https://user-images.githubusercontent.com/43964554/81111327-8cfa5780-8f25-11ea-83d1-36d037c9ca72.png)
+
 ## Structure
 
  - HTML/CSS 
