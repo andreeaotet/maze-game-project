@@ -26,7 +26,7 @@ function displayLevels() {
     var topicOption = document.getElementById('optionSelect').value;
 
     if (topicOption == 2) {
-        newTopic = "Welcome to our Very easy game";
+        newTopic = "Welcome - Level 1";
     } else if (topicOption == 3) {
         newTopic = "Welcome to our Easy game";
     } else if (topicOption == 4) {

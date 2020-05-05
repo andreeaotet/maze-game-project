@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-// var mazeRouter = require('./routes/maze'); //get data from json
+var mazeRouter = require('./routes/maze'); //get data from json
 var mazeRouter = require('./routes/maze-db');
 
 var app = express();
