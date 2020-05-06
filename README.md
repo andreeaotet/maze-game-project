@@ -17,10 +17,10 @@ Open [maze.html](https://andreeaotet.github.io/maze-game-project/public/index.ht
 
 ## Structure
 
- - HTML/CSS - app layer
+ - HTML/CSS 
  - Javascript 
- - mySQL 
  - Node.js
+ - mySQL 
 
 ## Setup
 
